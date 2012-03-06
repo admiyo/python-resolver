@@ -10,10 +10,6 @@ class Scope(object):
         '''
         Constructor
         '''
-
-    
-    
-
 scope_map = dict([])
 
 

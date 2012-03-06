@@ -4,8 +4,8 @@ Created on Mar 6, 2012
 @author: ayoung
 '''
 import unittest
-import Resolver.resolver
-import ResolverTest
+import resolver
+import test
 
 
 
@@ -33,12 +33,11 @@ class Test(unittest.TestCase):
 
 
     def testName(self):
-
-        Resolver.resolver.register(ResolverTest.resolver_test.SampleOp, do_something)
+        resolver.register(SampleOp, do_something)
         
-        res =   Resolver.resolver.Resolver()  
+        res =   resolver.Resolver()  
         
-        y= res.resolve(ResolverTest.resolver_test.SampleOp)
+        y= res.resolve(SampleOp)
         
         self.assertEqual("something", y.operation(), "factory got right instance")
 
