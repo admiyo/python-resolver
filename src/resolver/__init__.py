@@ -15,7 +15,7 @@ scope_map = dict([])
 
 def register(classname, proxy, scope = None):
     if (scope_map.has_key(scope)):
-        proxy_map = scope_map(scope)
+        proxy_map = scope_map[scope]
         if (proxy_map.has_key(classname)):
             raise ValueError(classname + "already has creation proxy registered")
     else:
