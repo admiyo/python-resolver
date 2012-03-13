@@ -5,6 +5,7 @@ Created on Mar 6, 2012
 '''
 import unittest
 import resolver
+
 import test
 
 
@@ -40,14 +41,13 @@ def do_something(resolver):
 class Test(unittest.TestCase):
 
     def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
-    def testName(self):
         resolver.register(SampleOp, do_something)
         resolver.register(SampleBase, create_base)
+
+#    def tearDown(self):
+        #resolver.scope_map = {resolver.GLOBAL_SCOPE:dict()}
+
+    def testName(self):
 
         res = resolver.Resolver()
         op = res.resolve(SampleOp)
@@ -55,6 +55,11 @@ class Test(unittest.TestCase):
 
         base = res.resolve(SampleBase)
         self.assertEqual("sub", base.operation())
+
+    def test_delegation(self):
+        params = dict()
+        headers = dict()
+        request_resolver = resolver.RequestResolver(params,headers)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
